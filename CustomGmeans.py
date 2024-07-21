@@ -65,30 +65,6 @@ class CustomGmeans:
         self._verify_arguments()
 
 
-    def process(self):
-        """!
-        @brief Performs cluster analysis in line with rules of G-Means algorithm.
-
-        @return (gmeans) Returns itself (G-Means instance).
-
-        @see get_clusters()
-        @see get_centers()
-
-        """
-        if self.__ccore is True:
-            return self._process_by_ccore()
-
-        return self._process_by_python()
-
-
-    def _process_by_ccore(self):
-        """!
-        @brief Performs cluster analysis using CCORE (C/C++ part of pyclustering library).
-
-        """
-        self.__clusters, self.__centers, self.__total_wce = gmeans_wrapper(self.__data, self.__k_init, self.__tolerance, self.__repeat, self.__k_max, self.__random_state)
-        return self
-
 
     def _process_by_python(self):
         print('Starting GMEANS')
